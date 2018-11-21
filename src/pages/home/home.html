@@ -1,22 +1,20 @@
-<ion-header>
-  <ion-navbar color="primary">
-    <ion-title *ngIf="!categoryTitle">Recent posts</ion-title>
-    <ion-title *ngIf="categoryTitle">{{categoryTitle}} posts</ion-title>
-    <ion-buttons *ngIf="loggedUser" end>
-      <button ion-button icon-only (click)="logOut()">
-        <ion-icon class="toolbar-icon" name="log-out"></ion-icon>
-      </button>
-    </ion-buttons>
-    <ion-buttons *ngIf="!loggedUser" end>
-      <button ion-button icon-only (click)="goToLogin()">
-        <ion-icon class="toolbar-icon" name="log-in"></ion-icon>
-      </button>
-    </ion-buttons>
-  </ion-navbar>
-</ion-header>
+<!-- <ion-header>
 
-<ion-content class="content">
-  <ion-card *ngFor="let post of posts" >
+  <ion-segment [(ngModel)]="lan">
+    <ion-segment-button value="bangla">
+      <span style="color: black;">বাংলা</span>
+    </ion-segment-button>
+    <ion-segment-button value="english">
+
+      <span style="color: black;">English</span>
+    </ion-segment-button>
+  </ion-segment>
+
+</ion-header> -->
+
+
+<ion-content padding class="content" [ngSwitch]="lan">
+  <!-- <ion-card *ngFor="let post of posts" >
     <ion-card-content >
       <ion-card-title [innerHTML]="post.title.rendered"></ion-card-title>
       <p [innerHTML]="post.excerpt.rendered"></p>
@@ -39,5 +37,100 @@
     loadingSpinner="bubbles"
     loadingText="Loading more posts ...">
     </ion-infinite-scroll-content>
-  </ion-infinite-scroll>
+  </ion-infinite-scroll> -->
+  <div *ngSwitchCase="'bangla'">
+
+    <div style="height: 15px;"></div>
+
+    <ion-grid>
+      <ion-row>
+        <ion-col text-center>
+          <img height=50 src="assets/img/EC4JLogo.png" />
+        </ion-col>
+        <ion-col text-center>
+          <img height=50 src="assets/img/bangladesh-government-logo-png.png" />
+          <p style="font-size: .5em;">বাণিজ্য মন্ত্রণালয়</p>
+        </ion-col>
+        <ion-col text-center>
+          <img height=50 src="assets/img/IFC-logo-square.png" />
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    
+    <div style="height: 10px;"></div>
+    
+    <h4 style="text-align:justify;">বাংলাদেশের চামড়া, চামড়াজাত পণ্য ও পাদুকা শিল্পের
+        সামাজিক ও পরিবেশগত কমপ্লায়েন্স সহায়িকা (হ্যান্ডবুক)</h4>
+        
+        <p style="text-align:justify;">বাংলাদেশের চামড়া, চামড়াজাত পণ্য ও পাদুকা শিল্পের সামাজিক ও পরিবেশগত কমপ্লায়েন্স
+            বিষয়ক হ্যান্ডবুকটি বাণিজ্য মন্ত্রণালয় এবং বিশ্বব্যাংক গ্রূপ এর যৌথ সহযোগিতায় প্রকাশিত হয়েছে। এতে সামাজিক এবং
+            পরিবেশগত কমপ্লায়েন্স সংশ্লিষ্ট গুরুত্বপূর্ণ এবং জরুরি করণীয়সমূহ এক জায়গায় সন্নিবেশিত করে সহজে অনুসরণ যোগ্য
+            করে উপস্থাপনের পাশাপাশি কিভাবে তা অর্জিত হতে পারে সেই বিবরণও দেয়া হয়েছে।</p>
+            
+            <ion-grid>
+              <ion-row style="text-align: justify;">
+                  <ion-col text-center>
+                    <img height=250 src="assets/img/Bangla_Leather Report Cover Final-02.jpg" />
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+              
+              <button ion-button large block (click)="goToBooklet('bn')">হ্যান্ডবুকটি পড়তে এখানে ক্লিক করুন</button>
+              
+            </div> <!-- end of bangla section -->
+            
+            
+            <div *ngSwitchCase="'english'">
+              
+              <div style="height: 15px;"></div>
+              
+              <ion-grid>
+                <ion-row>
+                  <ion-col text-center>
+                    <img height=50 src="assets/img/EC4JLogo.png" />
+                  </ion-col>
+                  <ion-col text-center>
+                    <img height=50 src="assets/img/bangladesh-government-logo-png.png" />
+                    <p style="font-size: .5em;">Ministry of Commerce</p>
+                  </ion-col>
+                  <ion-col text-center>
+                    <img height=50 src="assets/img/IFC-logo-square.png" />
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+              
+              <div style="height: 10px;"></div>
+              
+    <h4>Handbook on Social and Environmental Compliance in Bangladesh’s Leather Industry</h4>
+
+    <p style="text-align:justify;">The Handbook on Social and Environmental Compliance in Bangladesh’s Leather Industry
+      has been developed through the joint collaboration of the Ministry of Commerce and the World Bank Group. By
+      bringing together all the critical requirements in an easy to follow format as well as descriptions on how to
+      meet standards for Environmental, Social and Quality compliance in one place, it provides a common source of
+      information, around which the sector can build its knowledge and begin to strengthen its capacities.</p>
+
+    <ion-grid>
+      <ion-row style="text-align: justify;">
+        <ion-col text-center>
+          <img height=250 src="assets/img/English_Leather Report Cover Final-01.jpg" />
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <button ion-button large block (click)="goToBooklet('eng')">To read the book click here</button>
+
+  </div>
+
+
 </ion-content>
+
+<ion-footer>
+    <ion-segment [(ngModel)]="lan">
+        <ion-segment-button value="bangla">
+          <span style="color: black;">বাংলা</span>
+        </ion-segment-button>
+        <ion-segment-button value="english">
+    
+          <span style="color: black;">English</span>
+        </ion-segment-button>
+      </ion-segment>
+</ion-footer>

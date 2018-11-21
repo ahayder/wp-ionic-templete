@@ -24,6 +24,7 @@ export class AuthenticationService {
   }
 
   doLogin(username, password){
+    console.log(username, password);
     return this.http.post(Config.WORDPRESS_URL + 'wp-json/jwt-auth/v1/token',{
       username: username,
       password: password

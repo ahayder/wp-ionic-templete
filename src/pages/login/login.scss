@@ -1,11 +1,11 @@
 page-login {
   .form-content{
-    background-color: #4682B4
+    background-color: #c7caa1;
   }
 
   .title{
     text-align: center;
-    color: #FFF;
+    color: #595959;
     margin: 100px 0px 50px;
     font-size: 30px;
   }
@@ -15,9 +15,9 @@ page-login {
     font-size: 16px;
     margin-top: 10px;
     font-weight: 500;
-    color: #FFF;
+    color: #595959;
     a{
-      color: #FFF;
+      color: #595959;
     }
   }
 
@@ -28,6 +28,7 @@ page-login {
   .login-button{
     margin-top: 30px;
     font-weight: 500;
+    color: white !important;
   }
 
   .error-message{

@@ -1,20 +1,23 @@
-<ion-header>
-  <ion-navbar>
-    <ion-title>Register</ion-title>
-  </ion-navbar>
-</ion-header>
-
 <ion-content padding class="form-content">
-  <form class="form" [formGroup]="register_form"  (ngSubmit)="onSubmit(register_form.value)">
+  <ion-grid>
+    <ion-row>
+      <ion-col text-center>
+        <img height=50 src="assets/img/EC4JLogo.png" />
+      </ion-col>
+      <ion-col text-center>
+        <img height=50 src="assets/img/bangladesh-government-logo-png.png" />
+        <p style="font-size: .5em;">Ministry of Commerce</p>
+      </ion-col>
+      <ion-col text-center>
+        <img height=50 src="assets/img/IFC-logo-square.png" />
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <form class="form" [formGroup]="register_form" (ngSubmit)="saveToFireBase(register_form.value)">
 
     <ion-item>
-      <ion-label color="primary">Username</ion-label>
-      <ion-input type="text" formControlName="username" class="form-controll" required></ion-input>
-    </ion-item>
-
-    <ion-item>
-      <ion-label color="primary">Display Name</ion-label>
-      <ion-input type="text" formControlName="displayName"></ion-input>
+      <ion-label color="primary">Name</ion-label>
+      <ion-input type="text" formControlName="name"></ion-input>
     </ion-item>
 
     <ion-item>
@@ -23,10 +26,21 @@
     </ion-item>
 
     <ion-item>
-      <ion-label color="primary">Password</ion-label>
-      <ion-input type="password" formControlName="password"></ion-input>
+      <ion-label color="primary">Mobile</ion-label>
+      <ion-input type="tel" formControlName="mobile"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label color="primary">Designation</ion-label>
+      <ion-input type="text" formControlName="designation"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label color="primary">Organization</ion-label>
+      <ion-input type="text" formControlName="organization"></ion-input>
     </ion-item>
     <br>
-    <button ion-button full type="submit" [disabled]="!register_form.valid">Submit</button>
+    <p class="login"><a (click)="goToLogin()">Already registered? Go to login.</a></p>
+    <button ion-button color="dark" large full type="submit" [disabled]="!register_form.valid" style="color:white;">Register</button>
   </form>
 </ion-content>

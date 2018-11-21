@@ -1,0 +1,34 @@
+
+
+<ion-content padding>
+
+  <ion-list>
+    <ion-item *ngFor="let cat of categories" (click)="categoryTapped(cat)">
+      <span [style.font-size]="defaultFont" >{{ cat.name }}</span>
+      <ion-icon name="ios-arrow-round-forward" item-end></ion-icon>
+    </ion-item>
+  </ion-list>
+
+</ion-content>
+
+
+<ion-footer>
+
+    <ion-navbar color="primary">
+  
+      <ion-buttons end>
+        <button ion-button icon-only (click)="defaultFont = '1em'">A</button>
+        <button style="width: 5px; visibility: hidden;"></button>
+        <button ion-button icon-only (click)="defaultFont = '1.5em'"><span style="font-size: 1.5em;">A</span></button>
+        <button style="width: 5px; visibility: hidden;"></button>
+        <button ion-button icon-only (click)="goToSearch()">
+          <ion-icon name="search"></ion-icon>
+        </button>
+        <button style="width: 5px; visibility: hidden;"></button>
+        <button ion-button icon-only (click)="goToHome()">
+          <ion-icon name="home"></ion-icon>
+        </button>
+      </ion-buttons>
+    </ion-navbar>
+  
+  </ion-footer>

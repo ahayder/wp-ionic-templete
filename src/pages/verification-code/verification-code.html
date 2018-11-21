@@ -1,0 +1,13 @@
+<ion-content padding class="form-content">
+
+    
+    <ion-label class="title">Enter the code</ion-label>
+
+    <ion-item>
+      <ion-label color="primary">4 digit code</ion-label>
+      <ion-input type="number" [(ngModel)]="code" class="form-controll"></ion-input>
+    </ion-item>
+    
+    <button ion-button large full color="dark" (click)="login(code)" class="login-button" >Login</button>
+  
+</ion-content>

@@ -9,14 +9,16 @@ import 'rxjs/add/observable/forkJoin';
 export class WordpressService {
   constructor(public http: Http){}
 
-  getRecentPosts(categoryId:number, page:number = 1){
-    //if we want to query posts by category
-    let category_url = categoryId? ("&categories=" + categoryId): "";
+  // getRecentPosts(categoryId:number, page:number = 1){
+  //   //if we want to query posts by category
+  //   let category_url = categoryId? ("&categories=" + categoryId): "";
 
-    return this.http.get(
-      Config.WORDPRESS_REST_API_URL
-      + 'posts?page=' + page
-      + category_url)
+  //   return this.http.get(Config.WORDPRESS_REST_API_URL+ 'posts?page=' + page + category_url)
+  //   .map(res => res.json());
+  // }
+
+  getRecentPosts(categoryId){
+    return this.http.get(Config.WORDPRESS_REST_API_URL+ 'posts?categories=' + categoryId)
     .map(res => res.json());
   }
 
@@ -48,6 +50,11 @@ export class WordpressService {
     .map(res => res.json());
   }
 
+  getSubcategories(parentid){
+    return this.http.get(Config.WORDPRESS_REST_API_URL + "categories/?parent=" + parentid + "&per_page=100&orderby=description")
+    .map(res => res.json());
+  }
+
   createComment(postId, user, comment){
     let header: Headers = new Headers();
     header.append('Authorization', 'Bearer ' + user.token);
@@ -60,4 +67,12 @@ export class WordpressService {
     },{ headers: header })
     .map(res => res.json());
   }
+
+
+  getSearchResult(q){
+    return this.http.get(Config.WORDPRESS_REST_API_URL+ 'posts?search=' + q)
+    .map(res => res.json());
+  }
+
+  
 }

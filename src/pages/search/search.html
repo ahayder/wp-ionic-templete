@@ -1,0 +1,25 @@
+<ion-content padding>
+
+  <ion-searchbar (ionInput)="doSearch($event)"></ion-searchbar>
+
+  <ion-card *ngFor="let post of items" (click)="postTapped($event, post)">
+    <ion-card-content>
+      <ion-card-title [innerHTML]="post.title.rendered"></ion-card-title>
+      <p [innerHTML]="post.excerpt.rendered"></p>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>
+
+<ion-footer>
+
+  <ion-navbar color="primary">
+    <ion-title>Search</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="goToHome()">
+        <ion-icon name="home"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-footer>
