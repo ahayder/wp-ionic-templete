@@ -29,6 +29,7 @@ import {PinchZoomModule} from 'ngx-pinch-zoom';
 // angular fire 2
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { RawHtmlPipe } from '../pipes/raw-html/raw-html';
 
 
   export const firebaseConfig = {
@@ -51,7 +52,8 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
     SubcategoriesPage,
     BanglaBookletPage,
     SearchPage,
-    VerificationCodePage
+    VerificationCodePage,
+    RawHtmlPipe
   ],
   imports: [
     BrowserModule,

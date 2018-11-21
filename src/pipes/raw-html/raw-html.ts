@@ -1,4 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 
 /**
  * Generated class for the RawHtmlPipe pipe.
@@ -13,7 +14,10 @@ export class RawHtmlPipe implements PipeTransform {
   /**
    * Takes a value and makes it lowercase.
    */
-  transform(value: string, ...args) {
-    return value.toLowerCase();
+  constructor(private sanitizer: DomSanitizer) {
+  }
+
+  transform(content) {
+    return this.sanitizer.bypassSecurityTrustHtml(content);
   }
 }

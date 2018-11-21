@@ -2,13 +2,13 @@
 
   <div *ngIf="post">
     <div class="post-title" text-center [style.font-size]="defaultFont" [innerHTML]="post.title.rendered"></div>
-    <div class="post-content" *ngIf="!imgURL" [style.font-size]="defaultFont" [innerHTML]="bodyhtml">
+    <div class="post-content" [style.font-size]="defaultFont" [innerHTML]="bodyhtml | rawHtml">
     </div>
   </div>
 
-    <zoom-area *ngIf="imgURL" [(scale)]="scale" [(controls)]="showControls">
+    <!-- <zoom-area *ngIf="imgURL" [(scale)]="scale" [(controls)]="showControls">
         <img src="{{imgURL}}"/>
-    </zoom-area>
+    </zoom-area> -->
   
 </ion-content>
 
