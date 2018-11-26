@@ -26,7 +26,7 @@ export class MyApp {
       this.nativeStorage.getItem('user')
       .then(
         data => this.rootPage = HomePage,
-        error => this.rootPage = HomePage
+        error => this.rootPage = RegisterPage
       );
       // if(this.nativeStorage.getItem('user')){
       //   this.rootPage = HomePage

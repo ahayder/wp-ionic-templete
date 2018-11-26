@@ -53,20 +53,26 @@ export class PostPage {
 
     // el.innerHTML = rawPost.content.redered;
 
-    this.imgURL = rawPost.content.rendered.match(/<img[^>]+src="([^">]+)"/);
-    if(this.imgURL){
-      this.imgURL = this.imgURL[1];
-      this.imgURL = this.imgURL.replace(/-\d*x\d*/, "");
-    }
-    console.log(this.imgURL);
-
-    var fullImageTag = rawPost.content.rendered.match(/<img([^\s>]*)(\s[^<]*)>/);
-    if(fullImageTag)fullImageTag = fullImageTag[0];
-
-    this.bodyhtml = rawPost.content.rendered.replace(/<img([^\s>]*)(\s[^<]*)>/, '<ion-scroll zoom="true" maxZoom="20"><img src="'+ this.imgURL +'" /></ion-scroll>');
-    console.log(this.bodyhtml);
+    var temp = rawPost.content.rendered.replace(/-\d*x\d*/g, "");
+    temp = rawPost.content.rendered.replace(/\/>/g, "</zoom-area>");
+    this.bodyhtml = temp.replace(/<img/g, '<zoom-area [(scale)]="scale" [(controls)]="showControls"> <img ');
 
     this.post = rawPost;
+
+    // this.imgURL = rawPost.content.rendered.match(/<img[^>]+src="([^">]+)"/);
+    // if(this.imgURL){
+    //   this.imgURL = this.imgURL[1];
+    //   this.imgURL = this.imgURL.replace(/-\d*x\d*/, "");
+    // }
+    // console.log(this.imgURL);
+
+    // var fullImageTag = rawPost.content.rendered.match(/<img([^\s>]*)(\s[^<]*)>/);
+    // if(fullImageTag)fullImageTag = fullImageTag[0];
+
+    // this.bodyhtml = rawPost.content.rendered.replace(/<img([^\s>]*)(\s[^<]*)>/, '<ion-scroll zoom="true" maxZoom="20"><img src="'+ this.imgURL +'" /></ion-scroll>');
+    // console.log(this.bodyhtml);
+
+    // this.post = rawPost;
 
 
     loading.dismiss();
